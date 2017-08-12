@@ -28,7 +28,7 @@ $statement->closeCursor();
             <th>TAsk Name</th>
             <th>&nbsp;</th>
         </tr>        
-        <?php foreach ($todosas $todo) : ?>
+        <?php foreach ($todos as $todo) : ?>
         <tr>
             <td><?php echo $todo['todoName']; ?></td>
             <td>
