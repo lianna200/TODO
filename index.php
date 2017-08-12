@@ -19,7 +19,6 @@ $todo = $statement1->fetch();
 $todo_name = $todo['todoName'];
 $statement1->closeCursor();
 
-
 // Get all categories
 $query = 'SELECT * FROM todo
                        ORDER BY todoID';
