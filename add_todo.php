@@ -9,13 +9,13 @@ if ($name == null) {
 	} else {
 	    require_once('database.php');
 // Add the product to the database  
-$query = 'INSERT INTO categories (categoryName)
-		   VALUES (:category_name)';
+$query = 'INSERT INTO todo (todoName)
+		   VALUES (:todo_name)';
 	 $statement = $db->prepare($query);
-         $statement->bindValue(':category_name',
+         $statement->bindValue(':todo_name',
 	 $name);$statement->execute();
 	$statement->closeCursor();
 // Display the CategoryList page	
-include('category_list.php');
+include('todo_list.php');
 }
 ?>
