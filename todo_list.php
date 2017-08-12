@@ -17,33 +17,45 @@ $statement->closeCursor();
     <title>My TO Do</title>
     <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
-
 <!-- the body section -->
-<body>
-<header><h1>To DO Manager</h1></header>
+
+ <body>
+<header><h1>TO DO List</h1></header>
 <main>
-    <h1>Task List</h1>
+    <h1>TAsk</h1>
     <table>
         <tr>
-            <th>Task Name</th>
+            <th>TAsk Name</th>
             <th>&nbsp;</th>
+        </tr>        
+        <?php foreach ($todosas $todo) : ?>
+        <tr>
+            <td><?php echo $todo['todoName']; ?></td>
+            <td>
+                <form action="delete_todo.php" method="post">
+                    <input type="hidden" name="todo_id"
+                           value="<?php echo $todo['todoID']; ?>"/>
+                    <input type="submit" value="Delete"/>
+                </form>
+            </td>
         </tr>
-        
-        <!-- add code for the rest of the table here -->
-    
+        <?php endforeach; ?>    
     </table>
 
-    <h2>Add TO Do</h2>
+    <h2 class="margin_top_increase">Add ToDO</h2>
+    <form action="add_todo.php" method="post"
+          id="add_todo_form">
+
+        <label>TO Do Name:</label>
+        <input type="text" name="name" />
+        <input id="add_todo_button" type="submit" value="Add"/>
+    </form>
     
-    <!-- add code for the form here -->
-    
-    <br>
     <p><a href="index.php">List Tasks</a></p>
 
-    </main>
-
-    <footer>
-        <p>&copy; <?php echo date("Y"); ?> My TO DO List</p>
-    </footer>
+</main>
+<footer>
+    <p>&copy; <?php echo date("Y"); ?> My TO DO.</p>
+</footer>
 </body>
 </html>
