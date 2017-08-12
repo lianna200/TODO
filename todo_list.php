@@ -1,7 +1,7 @@
 <?php
 require_once('database.php');
 
-// Get all categories
+// Get all To Dos
 $query = 'SELECT * FROM todo
                        ORDER BY todoID';
 $statement = $db->prepare($query);
