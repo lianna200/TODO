@@ -1,10 +1,10 @@
 <?php
 // Get the product data
-$task_id = filter_input(INPUT_POST, 'task_id', FILTER_VALIDATE_INT);
+$todo_id = filter_input(INPUT_POST, 'todo_id', FILTER_VALIDATE_INT);
 $name = filter_input(INPUT_POST, 'name');
 
 // Validate inputs
-if ($task_id == null || $task_id == false ||
+if ($todo_id == null || $todo_id == false ||
      $name == null ) {
     $error = "Invalid product data. Check all fields and try again.";
     include('error.php');
@@ -13,11 +13,11 @@ if ($task_id == null || $task_id == false ||
 
     // Add the product to the database  
     $query = 'INSERT INTO task
-                 (taskID, taskName)
+                 (todoID, taskName)
               VALUES
-                 (:task_id, :name)';
+                 (:todo_id, :name)';
     $statement = $db->prepare($query);
-    $statement->bindValue(':task_id', $task_id);
+    $statement->bindValue(':todo_id', $todo_id);
     $statement->bindValue(':name', $name);
     $statement->execute();
     $statement->closeCursor();
