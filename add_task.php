@@ -1,28 +1,24 @@
 <?php
 // Get the product data
-$category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
-$code = filter_input(INPUT_POST, 'code');
+$task_id = filter_input(INPUT_POST, 'task_id', FILTER_VALIDATE_INT);
 $name = filter_input(INPUT_POST, 'name');
-$price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
 
 // Validate inputs
-if ($category_id == null || $category_id == false ||
-        $code == null || $name == null || $price == null || $price == false) {
+if ($task_id == null || $task_id == false ||
+     $name == null ) {
     $error = "Invalid product data. Check all fields and try again.";
     include('error.php');
 } else {
     require_once('database.php');
 
     // Add the product to the database  
-    $query = 'INSERT INTO products
-                 (categoryID, productCode, productName, listPrice)
+    $query = 'INSERT INTO task
+                 (taskID, taskName)
               VALUES
-                 (:category_id, :code, :name, :price)';
+                 (:task_id, :name)';
     $statement = $db->prepare($query);
-    $statement->bindValue(':category_id', $category_id);
-    $statement->bindValue(':code', $code);
+    $statement->bindValue(':task_id', $task_id);
     $statement->bindValue(':name', $name);
-    $statement->bindValue(':price', $price);
     $statement->execute();
     $statement->closeCursor();
 
