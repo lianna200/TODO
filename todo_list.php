@@ -2,8 +2,8 @@
 require_once('database.php');
 
 // Get all categories
-$query = 'SELECT * FROM categories
-                       ORDER BY categoryID';
+$query = 'SELECT * FROM todo
+                       ORDER BY todoID';
 $statement = $db->prepare($query);
 $statement->execute();
 $categories = $statement->fetchAll();
@@ -14,18 +14,18 @@ $statement->closeCursor();
 
 <!-- the head section -->
 <head>
-    <title>My Guitar Shop</title>
+    <title>My TO Do</title>
     <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 
 <!-- the body section -->
 <body>
-<header><h1>Product Manager</h1></header>
+<header><h1>To DO Manager</h1></header>
 <main>
-    <h1>Category List</h1>
+    <h1>Task List</h1>
     <table>
         <tr>
-            <th>Name</th>
+            <th>Task Name</th>
             <th>&nbsp;</th>
         </tr>
         
@@ -33,17 +33,17 @@ $statement->closeCursor();
     
     </table>
 
-    <h2>Add Category</h2>
+    <h2>Add TO Do</h2>
     
     <!-- add code for the form here -->
     
     <br>
-    <p><a href="index.php">List Products</a></p>
+    <p><a href="index.php">List Tasks</a></p>
 
     </main>
 
     <footer>
-        <p>&copy; <?php echo date("Y"); ?> My Guitar Shop, Inc.</p>
+        <p>&copy; <?php echo date("Y"); ?> My TO DO List</p>
     </footer>
 </body>
 </html>
