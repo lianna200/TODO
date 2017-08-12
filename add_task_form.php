@@ -37,7 +37,7 @@ $statement->closeCursor();
 
        
 
-            <label>Name:</label>
+            <label>Task Name:</label>
             <input type="text" name="name"><br>
 
      
