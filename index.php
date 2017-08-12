@@ -1,7 +1,7 @@
 <?php
 require_once('database.php');
 
-// Get category ID
+// Get ToDo ID
 if (!isset($todo_id)) {
     $todo_id = filter_input(INPUT_GET, 'todo_id', 
             FILTER_VALIDATE_INT);
@@ -9,23 +9,26 @@ if (!isset($todo_id)) {
         $todo_id = 1;
     }
 }
-// Get name for selected category
-$queryTodo = 'SELECT * FROM todo
+// Get name for selected TODo
+$querytodo = 'SELECT * FROM todo
                   WHERE todoID = :todo_id';
-$statement1 = $db->prepare($queryTodo);
+$statement1 = $db->prepare($querytodo);
 $statement1->bindValue(':todo_id', $todo_id);
 $statement1->execute();
 $todo = $statement1->fetch();
 $todo_name = $todo['todoName'];
 $statement1->closeCursor();
 
-// Get all categories
+// Get all todos
 $query = 'SELECT * FROM todo
                        ORDER BY todoID';
 $statement = $db->prepare($query);
 $statement->execute();
 $categories = $statement->fetchAll();
 $statement->closeCursor();
+
+
+
 
 // Get products for selected category
 $queryTask = 'SELECT * FROM task
@@ -57,9 +60,9 @@ $statement3->closeCursor();
         <h2>ToDos</h2>
         <nav>
         <ul>
-            <?php foreach ($tasks as $task) : ?>
-            <li><a href=".?task_id=<?php echo $task['taskID']; ?>">
-                    <?php echo $task['taskName']; ?>
+            <?php foreach ($todos as $todo) : ?>
+            <li><a href=".?todo_id=<?php echo $todo['todoID']; ?>">
+                    <?php echo $todo['todoName']; ?>
                 </a>
             </li>
             <?php endforeach; ?>
