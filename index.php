@@ -93,7 +93,7 @@ $statement3->closeCursor();
             <?php endforeach; ?>
         </table>
         <p><a href="add_task_form.php">Add Task</a></p>
-        <p><a href="category_list.php">List TO DOs</a></p>        
+        <p><a href="todo_list.php">List TO DOs</a></p>        
     </section>
 </main>
 <footer>
